@@ -1,0 +1,32 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "y7KP7TUDsuM0WY873-tEE"
+uri = "file://attached_assets/generated_images/a_glamorous_seductive_casino_e10e.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "VnJUsMu5wMYR3RDq-dkrF"
+uri = "file://attached_assets/generated_images/an_elegant_glamorous_woman_d988.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "06Z3ywYZQ0JUIwQGIcJUC"
+uri = "file://attached_assets/generated_images/a_beautiful_glamorous_woman_9629.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "rQrVsOM6bfNL5T0B5ezXD"
+uri = "file://attached_assets/generated_images/an_attractive_elegant_woman_28fe.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "DFpUbvttHZRy1x0kqQ0O8"
+uri = "file://attached_assets/generated_images/a_glamorous_confident_woman_6101.png"
+type = "image"
+title = "generated_image"

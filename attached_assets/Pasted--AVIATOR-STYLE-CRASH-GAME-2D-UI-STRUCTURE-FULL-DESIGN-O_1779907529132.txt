@@ -1,0 +1,136 @@
+🎮 AVIATOR STYLE CRASH GAME — 2D UI STRUCTURE (FULL DESIGN)
+🧠 Overall Screen Concept
+
+Game ek 2D dark neon HUD dashboard hota hai.
+
+Screen 3 main zones me divide hoti hai:
+
+┌─────────────────────────────────────┐
+│  TOP BAR (History + Stats)         │
+├───────────────┬─────────────────────┤
+│ LEFT PANEL    │   MAIN GAME AREA    │
+│ (Live Feed)   │ (Rocket + Graph)    │
+│               │                     │
+├───────────────┴─────────────────────┤
+│ BOTTOM PANEL (Bet + Cashout UI)    │
+└─────────────────────────────────────┘
+🧩 1. MAIN GAME AREA (CENTER — MOST IMPORTANT)
+🎯 Elements:
+🚀 Rocket / Plane Animation
+2D rocket left-bottom se right-top move karta hai
+Smooth curve trajectory
+Smoke trail + glow particles
+📈 Multiplier Display (BIG TEXT)
+Center me floating:
+1.00x → 1.24x → 3.50x → 12.00x
+Color change:
+Green = safe
+Yellow = risky
+Red = near crash
+📊 Flight Path Graph
+Rocket ke peeche line draw hoti hai
+Line exponential curve follow karti hai
+💥 Crash Effect
+Screen shake
+Explosion particle burst
+“CRASHED AT 4.52x” big text
+📊 2. TOP BAR (ROUND HISTORY + STATS)
+🔥 Elements:
+🧾 Last 10 Rounds History
+
+Small chips:
+
+[2.1x] [1.3x] [8.5x] [1.01x] [14x]
+
+Color coding:
+
+Green = high win
+Red = early crash
+Gold = jackpot
+📡 Game Status
+“Next round in 5s”
+“Betting open”
+👥 3. LEFT PANEL (LIVE ACTIVITY FEED)
+📡 Fake/Live Activity Stream (UI only)
+
+Example:
+
+🔥 Rahul cashed out 2.4x
+💰 Alex won 1200 coins
+⚡ Player789 crashed at 1.12x
+🎯 NinjaX joined round
+UI Style:
+Scrollable list
+Small avatars
+Time stamps (2s ago, 5s ago)
+🎮 4. BOTTOM PANEL (BETTING CONTROLS)
+💰 Elements:
+💵 Bet Input Box
+Coin slider
+Quick buttons: 10 / 50 / 100 / Max
+🚀 START BUTTON
+
+Big glowing button:
+
+[ PLACE BET ]
+💸 CASHOUT BUTTON (ACTIVE DURING GAME)
+[ CASH OUT 2.34x ]
+Only appears when rocket is flying
+⚙ Auto Cashout
+Toggle switch:
+Auto Cashout at: 2.00x
+🎨 5. VISUAL STYLE (VERY IMPORTANT)
+🌌 Theme
+Background: Deep black / space gradient
+Glow: Neon blue + purple + gold
+✨ Effects:
+Soft blur panels (glassmorphism)
+Floating particles
+Subtle grid background
+Smooth animations (no jerks)
+🔤 Typography
+Multiplier: bold digital font (very large)
+UI text: clean sans-serif
+Buttons: uppercase + spacing
+📱 MOBILE VERSION UI
+
+Same elements but stacked:
+
+[History Bar]
+[Rocket + Multiplier]
+[Live Feed]
+[Bet Panel]
+
+Cashout button always floating bottom center.
+
+🧠 6. INTERACTION FLOW
+Step-by-step:
+User bet lagata hai (bottom panel)
+Round start hota hai
+Rocket fly karta hai (center)
+Multiplier increase hota hai
+User cashout karta hai OR crash ho jata hai
+Result show hota hai
+History + feed update
+💥 7. EXTRA PREMIUM UI FEATURES
+🔥 Realistic Feel Add-ons:
+🎯 Near Crash Warning
+Screen red glow near high risk
+⚡ Slow Motion Effect
+High multiplier pe animation slow feel
+🔊 Sound FX
+Rocket hum
+Cashout click sound
+Explosion crash sound
+🏆 Win Animation
+Coins burst
+Screen glow pulse
+🧩 FINAL SUMMARY
+
+Aviator-style 2D UI ka core:
+
+Center = Rocket + multiplier (main focus)
+Top = history + status
+Left = live feed
+Bottom = betting controls
+Theme = dark neon + glass UI

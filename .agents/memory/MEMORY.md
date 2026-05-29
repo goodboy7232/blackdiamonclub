@@ -1,0 +1,1 @@
+- [DB package rebuild](db-rebuild.md) — when schema changes, run `cd lib/db && ../../node_modules/.bin/tsc -p tsconfig.json` to regenerate dist declarations for API server project references.

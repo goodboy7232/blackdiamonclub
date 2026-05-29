@@ -1,0 +1,116 @@
+🎡 LUCKY WHEEL GAME — WIN/LOSS LOGIC (REAL SYSTEM)
+🧠 1. WIN / LOSS KA BASIC RULE
+
+Lucky Wheel me har spin ka result RNG (Random Number Generator) se decide hota hai.
+
+👉 Simple rule:
+Wheel stop hua jis segment par → wahi result
+Agar tu us segment par bet kiya → WIN
+Nahi kiya → LOSS
+🎯 Example:
+
+Wheel segments:
+
+[1x | 2x | 5x | 10x | LOSE | JACKPOT]
+Result cases:
+Wheel → 5x
+✔ 5x bet kiya → win
+✖ 2x bet kiya → loss
+Wheel → LOSS
+❌ sab bets lose
+Wheel → JACKPOT
+💰 high reward win
+⚙️ 2. REAL LOGIC (CASINO STYLE)
+🎲 Step 1: Segment Setup
+
+Wheel ko multiple parts me divide kiya jata hai:
+
+Low reward segments (1x, 2x) → high probability
+Medium segments (5x, 10x) → medium probability
+Jackpot → very low probability
+🧮 Step 2: Probability System
+
+Har segment ka chance fixed hota hai:
+
+Example:
+
+1x → 40%
+2x → 25%
+5x → 15%
+10x → 10%
+Jackpot → 2%
+Lose → 8%
+
+👉 Isse balance hota hai game ka “house edge”
+
+🌀 Step 3: Spin Logic
+Wheel 3–8 full rotations leta hai
+Slowly slow hota hai
+Final stop → selected segment
+
+👉 Important: animation pre-decided hoti hai, real-time random nahi
+
+💰 Step 4: Payout Logic
+win = bet × segment multiplier
+
+Examples:
+
+2x → double money
+10x → 10 times
+0x / lose → 0 return
+jackpot → special multiplier
+🎡 3. WHEEL ME KAUN KAUN SE ELEMENT HOTE HAIN
+🧩 MAIN ELEMENTS (REAL UI)
+🟡 1. Wheel Circle
+Big 2D circle
+Segments (pie slices)
+Each slice has:
+color
+multiplier text
+icon (coin / bomb / crown)
+📍 2. Pointer (Fixed Arrow)
+Top center me hota hai
+Glow effect
+Wheel rotate hota hai, pointer fixed rehta hai
+✨ 3. Segment Colors
+
+Typical design:
+
+🟢 Green → small win (1x, 2x)
+🟡 Yellow → medium win (5x)
+🔴 Red → risk / loss
+🟣 Purple → jackpot
+⚫ Black → zero / lose
+📊 4. History Panel
+Last spins list:
+5x, 2x, LOSS, 10x, JACKPOT
+💰 5. Betting Panel
+Bet amount input
+Quick buttons (10 / 50 / 100)
+Spin button
+📡 6. Result Popup
+
+After spin:
+
+“YOU WON 5x”
+Or “TRY AGAIN”
+🎮 4. FULL GAME FLOW (REAL EXPERIENCE)
+User bet lagata hai
+Wheel spin start hota hai
+Animation rotate hoti hai
+Random segment select hota hai
+Wheel stop hota hai
+Result show hota hai
+History update hoti hai
+🔥 5. WHY IT FEELS ADDICTIVE (UI TRICK)
+Slow spin → tension
+Bright jackpot segments
+Near miss effect
+Flashy win animations
+Sound effects (tick tick stop)
+📌 FINAL SIMPLE SUMMARY
+Lucky Wheel = 4 CORE THINGS:
+🎡 Segmented wheel (rewards + loss)
+🎯 RNG selection system
+🌀 Spin animation (decay rotation)
+💰 Payout based on segment

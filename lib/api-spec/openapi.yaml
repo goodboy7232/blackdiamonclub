@@ -1,0 +1,792 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: BlackDiamondClub Gambling Platform API
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: auth
+    description: Authentication operations
+  - name: wallet
+    description: Wallet operations
+  - name: games
+    description: Game operations
+  - name: leaderboard
+    description: Leaderboard operations
+  - name: profile
+    description: User profile operations
+  - name: transactions
+    description: Transaction operations
+
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+
+  /auth/register:
+    post:
+      operationId: register
+      tags: [auth]
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegisterInput"
+      responses:
+        "201":
+          description: Registered
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "400":
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/login:
+    post:
+      operationId: login
+      tags: [auth]
+      summary: Login with username and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginInput"
+      responses:
+        "200":
+          description: Logged in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthResponse"
+        "401":
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/logout:
+    post:
+      operationId: logout
+      tags: [auth]
+      summary: Logout current session
+      responses:
+        "200":
+          description: Logged out
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+
+  /auth/me:
+    get:
+      operationId: getMe
+      tags: [auth]
+      summary: Get current logged-in user
+      responses:
+        "200":
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "401":
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/recover:
+    post:
+      operationId: recoverAccount
+      tags: [auth]
+      summary: Verify recovery question and reset password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RecoverInput"
+      responses:
+        "200":
+          description: Password reset
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageResponse"
+        "400":
+          description: Wrong answer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /wallet:
+    get:
+      operationId: getWallet
+      tags: [wallet]
+      summary: Get current user wallet balances
+      responses:
+        "200":
+          description: Wallet info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Wallet"
+        "401":
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /wallet/deposit:
+    post:
+      operationId: createDeposit
+      tags: [wallet]
+      summary: Submit a USDT BEP20 deposit request with screenshot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DepositInput"
+      responses:
+        "200":
+          description: Deposit processed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "400":
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /wallet/withdraw:
+    post:
+      operationId: createWithdrawal
+      tags: [wallet]
+      summary: Request a withdrawal from withdrawal wallet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WithdrawalInput"
+      responses:
+        "200":
+          description: Withdrawal submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
+        "400":
+          description: Insufficient funds or below minimum
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /wallet/deposit-address:
+    get:
+      operationId: getDepositAddress
+      tags: [wallet]
+      summary: Get USDT BEP20 deposit address and QR code
+      responses:
+        "200":
+          description: Deposit address info
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DepositAddress"
+
+  /transactions:
+    get:
+      operationId: listTransactions
+      tags: [transactions]
+      summary: List user transactions
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [deposit, withdrawal, game_win, game_loss]
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        "200":
+          description: Transaction list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionList"
+
+  /games/bet:
+    post:
+      operationId: placeBet
+      tags: [games]
+      summary: Place a bet on a game
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BetInput"
+      responses:
+        "200":
+          description: Bet result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BetResult"
+        "400":
+          description: Insufficient funds or invalid bet
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /games/cashout:
+    post:
+      operationId: cashout
+      tags: [games]
+      summary: Cash out during an active crash game
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CashoutInput"
+      responses:
+        "200":
+          description: Cashout result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BetResult"
+        "400":
+          description: No active bet or game already crashed
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /games/stats:
+    get:
+      operationId: getGameStats
+      tags: [games]
+      summary: Get recent game stats and fake live activity
+      parameters:
+        - name: gameType
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Game stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GameStats"
+
+  /leaderboard:
+    get:
+      operationId: getLeaderboard
+      tags: [leaderboard]
+      summary: Get top leaders list
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        "200":
+          description: Leaderboard entries
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LeaderboardList"
+
+  /profile:
+    get:
+      operationId: getProfile
+      tags: [profile]
+      summary: Get user profile
+      responses:
+        "200":
+          description: User profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+        "401":
+          description: Not authenticated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    patch:
+      operationId: updateProfile
+      tags: [profile]
+      summary: Update user profile
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ProfileUpdate"
+      responses:
+        "200":
+          description: Updated profile
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserProfile"
+
+  /profile/stats:
+    get:
+      operationId: getProfileStats
+      tags: [profile]
+      summary: Get user game statistics summary
+      responses:
+        "200":
+          description: Profile stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfileStats"
+
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+      required:
+        - message
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+      required:
+        - id
+        - username
+        - createdAt
+
+    RegisterInput:
+      type: object
+      properties:
+        username:
+          type: string
+          minLength: 3
+        password:
+          type: string
+          minLength: 6
+        recoveryQuestion:
+          type: string
+        recoveryAnswer:
+          type: string
+      required:
+        - username
+        - password
+        - recoveryQuestion
+        - recoveryAnswer
+
+    LoginInput:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+
+    RecoverInput:
+      type: object
+      properties:
+        username:
+          type: string
+        recoveryAnswer:
+          type: string
+        newPassword:
+          type: string
+          minLength: 6
+      required:
+        - username
+        - recoveryAnswer
+        - newPassword
+
+    AuthResponse:
+      type: object
+      properties:
+        user:
+          $ref: "#/components/schemas/User"
+        token:
+          type: string
+      required:
+        - user
+        - token
+
+    Wallet:
+      type: object
+      properties:
+        userId:
+          type: integer
+        depositBalance:
+          type: number
+        withdrawalBalance:
+          type: number
+        currency:
+          type: string
+      required:
+        - userId
+        - depositBalance
+        - withdrawalBalance
+        - currency
+
+    DepositAddress:
+      type: object
+      properties:
+        address:
+          type: string
+        network:
+          type: string
+        currency:
+          type: string
+        qrCode:
+          type: string
+          description: Base64 encoded QR code image
+        minDeposit:
+          type: number
+      required:
+        - address
+        - network
+        - currency
+        - qrCode
+        - minDeposit
+
+    DepositInput:
+      type: object
+      properties:
+        amount:
+          type: number
+        txHash:
+          type: ["string", "null"]
+        screenshotBase64:
+          type: ["string", "null"]
+          description: Base64 encoded screenshot image of the payment
+      required:
+        - amount
+
+    WithdrawalInput:
+      type: object
+      properties:
+        amount:
+          type: number
+        walletAddress:
+          type: string
+      required:
+        - amount
+        - walletAddress
+
+    Transaction:
+      type: object
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        type:
+          type: string
+          enum: [deposit, withdrawal, game_win, game_loss]
+        amount:
+          type: number
+        status:
+          type: string
+          enum: [pending, approved, rejected]
+        txHash:
+          type: ["string", "null"]
+        screenshotUrl:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+        gameType:
+          type: ["string", "null"]
+      required:
+        - id
+        - userId
+        - type
+        - amount
+        - status
+        - createdAt
+
+    TransactionList:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Transaction"
+        total:
+          type: integer
+      required:
+        - transactions
+        - total
+
+    BetInput:
+      type: object
+      properties:
+        gameType:
+          type: string
+          enum: [aviator, slots777, rocketrush, coinflip, spinsprint, dicedash, towerclimb, luckywheel, numberblast, gemdrop]
+        amount:
+          type: number
+        prediction:
+          type: ["string", "null"]
+          description: Optional prediction for games that need it (e.g. heads/tails for coinflip)
+      required:
+        - gameType
+        - amount
+
+    CashoutInput:
+      type: object
+      properties:
+        sessionId:
+          type: integer
+        currentMultiplier:
+          type: number
+      required:
+        - sessionId
+        - currentMultiplier
+
+    BetResult:
+      type: object
+      properties:
+        sessionId:
+          type: integer
+        won:
+          type: boolean
+        multiplier:
+          type: number
+        betAmount:
+          type: number
+        winAmount:
+          type: number
+        newDepositBalance:
+          type: number
+        newWithdrawalBalance:
+          type: number
+        crashPoint:
+          type: ["number", "null"]
+        message:
+          type: string
+      required:
+        - sessionId
+        - won
+        - multiplier
+        - betAmount
+        - winAmount
+        - newDepositBalance
+        - newWithdrawalBalance
+        - message
+
+    FakePlayer:
+      type: object
+      properties:
+        username:
+          type: string
+        amount:
+          type: number
+        multiplier:
+          type: ["number", "null"]
+        action:
+          type: string
+          enum: [entered, won, lost]
+        time:
+          type: string
+      required:
+        - username
+        - amount
+        - action
+        - time
+
+    GameStats:
+      type: object
+      properties:
+        gameType:
+          type: string
+        activePlayers:
+          type: integer
+        recentActivity:
+          type: array
+          items:
+            $ref: "#/components/schemas/FakePlayer"
+        bigWins:
+          type: array
+          items:
+            $ref: "#/components/schemas/FakePlayer"
+      required:
+        - gameType
+        - activePlayers
+        - recentActivity
+        - bigWins
+
+    LeaderboardEntry:
+      type: object
+      properties:
+        rank:
+          type: integer
+        username:
+          type: string
+        totalWinnings:
+          type: number
+        gamesPlayed:
+          type: integer
+        winRate:
+          type: number
+        isOnline:
+          type: boolean
+      required:
+        - rank
+        - username
+        - totalWinnings
+        - gamesPlayed
+        - winRate
+        - isOnline
+
+    LeaderboardList:
+      type: object
+      properties:
+        leaders:
+          type: array
+          items:
+            $ref: "#/components/schemas/LeaderboardEntry"
+        updatedAt:
+          type: string
+      required:
+        - leaders
+        - updatedAt
+
+    UserProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: ["string", "null"]
+        phone:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+        recoveryQuestion:
+          type: string
+      required:
+        - id
+        - username
+        - createdAt
+        - recoveryQuestion
+
+    ProfileUpdate:
+      type: object
+      properties:
+        email:
+          type: ["string", "null"]
+        phone:
+          type: ["string", "null"]
+        currentPassword:
+          type: ["string", "null"]
+        newPassword:
+          type: ["string", "null"]
+
+    ProfileStats:
+      type: object
+      properties:
+        totalBets:
+          type: integer
+        totalWins:
+          type: integer
+        totalLosses:
+          type: integer
+        winRate:
+          type: number
+        biggestWin:
+          type: number
+        totalDeposited:
+          type: number
+        totalWithdrawn:
+          type: number
+        favoriteGame:
+          type: ["string", "null"]
+      required:
+        - totalBets
+        - totalWins
+        - totalLosses
+        - winRate
+        - biggestWin
+        - totalDeposited
+        - totalWithdrawn

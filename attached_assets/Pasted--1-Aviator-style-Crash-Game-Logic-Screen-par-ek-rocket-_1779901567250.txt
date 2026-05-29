@@ -1,0 +1,207 @@
+## 1. Aviator-style Crash Game
+
+**Logic:**
+
+* Screen par ek rocket udata hai.
+* Multiplier `1.00x` se start hota hai aur continuously badhta rehta hai.
+* Random point par rocket “crash” ho jata hai.
+* User ko crash hone se pehle “Cash Out” dabana hota hai.
+
+**Gameplay Flow:**
+
+1. User bet amount enter karega.
+2. “Start” dabayega.
+3. Rocket animation start hogi.
+4. Multiplier badhega.
+5. Time par cashout → win.
+6. Late cashout → loss.
+
+**Core Logic Example:**
+
+* Multiplier हर 0.1 sec me increase.
+* Random crash point generate.
+* Reward = Bet × Current Multiplier.
+
+---
+
+## 2. 777 Strike
+
+**Logic:**
+
+* 3 ya 5 reels spin hoti hain.
+* Symbols randomly stop hote hain.
+* Matching symbols → reward.
+
+**Gameplay:**
+
+1. User coin amount choose karega.
+2. “Spin” dabayega.
+3. Reels rotate hongi.
+4. Matching pattern par payout milega.
+
+**Reward System:**
+
+* 777 → Highest payout.
+* Triple same symbol → medium payout.
+* Near match → small bonus.
+
+---
+
+## 3. Rocket Rush
+
+**Logic:**
+
+* Endless runner type game.
+* Rocket ko asteroids avoid karne hain.
+* Distance aur survival time par score.
+
+**Gameplay:**
+
+1. Left/right controls.
+2. Speed gradually increase.
+3. Coins collect karo.
+4. Crash hone tak play.
+
+**Reward Logic:**
+
+* More distance = more score.
+* Combo streak bonus.
+
+---
+
+## 4. Coin Flip Quest
+
+**Logic:**
+
+* User heads/tails choose karega.
+* Random coin toss result generate hoga.
+
+**Gameplay:**
+
+1. Bet select.
+2. Heads ya tails choose.
+3. Coin animation.
+4. Correct prediction → double reward.
+
+---
+
+## 5. Spin Sprint
+
+**Logic:**
+
+* Circular wheel spin hota hai.
+* Different reward zones hote hain.
+
+**Gameplay:**
+
+1. User spin token use karega.
+2. Wheel rotate hogi.
+3. Pointer reward section par rukega.
+
+**Special Features:**
+
+* Rare jackpot zones.
+* Speed boost spin.
+* Daily free spin.
+
+---
+
+## 6. Dice Dash
+
+**Logic:**
+
+* Random dice number generate hota hai.
+* User prediction karta hai.
+
+**Gameplay Modes:**
+
+* Higher than 50
+* Lower than 50
+* Exact number guess
+
+**Reward:**
+
+* Exact number → highest multiplier.
+* Range prediction → medium payout.
+
+---
+
+## 7. Tower Climb
+
+**Logic:**
+
+* Multiple floors.
+* Har level par hidden safe tile choose karni hoti hai.
+
+**Gameplay:**
+
+1. Start floor select.
+2. Correct tile → next floor.
+3. Wrong tile → game over.
+4. User kabhi bhi cashout kar sakta hai.
+
+**Risk System:**
+
+* Higher floor = higher multiplier.
+
+---
+
+## 8. Lucky Wheel
+
+**Logic:**
+
+* Big fortune wheel.
+* Different rewards and multipliers.
+
+**Gameplay:**
+
+1. User wheel spin karega.
+2. Rotation physics animation.
+3. Final pointer reward decide karega.
+
+**Add-ons:**
+
+* Bonus spins.
+* Mystery section.
+* Daily rewards.
+
+---
+
+## 9. Number Blast
+
+**Logic:**
+
+* Random number generate hota hai.
+* User guess karta hai.
+
+**Gameplay:**
+
+1. Number range select.
+2. Guess input.
+3. System reveal karega result.
+
+**Reward:**
+
+* Closer guess = better reward.
+* Exact hit = jackpot.
+
+---
+
+## 10. Gem Drop
+
+**Logic:**
+
+* Gems upar se fall hoti hain.
+* Matching colors combine karne hote hain.
+
+**Gameplay:**
+
+1. Drag and drop gems.
+2. Same color combo banao.
+3. Combo chain → higher score.
+
+**Progression:**
+
+* Timed mode.
+* Endless mode.
+* Combo multiplier system.

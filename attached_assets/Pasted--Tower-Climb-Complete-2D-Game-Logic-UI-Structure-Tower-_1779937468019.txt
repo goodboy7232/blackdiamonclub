@@ -1,0 +1,290 @@
+🗼 Tower Climb — Complete 2D Game Logic + UI Structure
+
+Tower Climb ek risk progression / floor survival game ho sakta hai jisme player ek tower ke floors climb karta hai aur har level par safe choice choose karni hoti hai. Jitna upar jaata hai, utna reward multiplier increase hota hai aur risk bhi badhta hai.
+
+1) Core Game Idea
+
+Player ko:
+
+floor by floor upar jana hai
+har floor par safe tile choose karni hai
+wrong tile → trap / fall / game over
+correct tile → next floor unlock
+kabhi bhi “Cash Out” karke current reward le sakta hai
+
+Game ka feel:
+
+tension
+suspense
+greed vs safety
+fast decision making
+2) Core Gameplay Loop
+Step-by-step flow
+User bet / entry coins choose karta hai
+Tower start hota hai
+Floor 1 show hota hai
+User tiles me se ek choose karta hai
+Safe hua:
+next floor
+multiplier increase
+Trap hua:
+lose
+game over
+User kisi bhi floor par cash out kar sakta hai
+3) Floor System
+
+Har floor par:
+
+2–5 tiles ho sakti hain
+Sirf kuch safe hoti hain
+Baaki trap
+
+Example:
+
+Easy floor
+[ SAFE ] [ TRAP ]
+Hard floor
+[ SAFE ] [ TRAP ] [ TRAP ] [ TRAP ]
+4) Difficulty Progression
+
+Tower jitna upar:
+
+safe tiles kam
+trap chance zyada
+rewards higher
+
+Example progression:
+
+Floor	Safe Tiles	Trap Tiles	Reward
+1	2	1	1.2x
+2	2	2	1.5x
+3	1	3	2x
+4	1	4	3x
+5	1	5	5x
+5) Reward Logic
+Reward formula
+reward = base_bet × floor_multiplier
+
+Example:
+
+Bet = 100
+Reached floor 5 = 5x
+Reward = 500
+6) Trap Logic
+
+Trap ho sakta hai:
+
+collapsing floor
+spikes
+fake platform
+laser tile
+lava block
+
+Animation:
+
+tile break
+character fall
+screen shake
+7) Game Modes
+Classic
+
+Standard tower climb
+
+Hardcore
+fewer safe tiles
+faster gameplay
+Timed mode
+quick decisions
+countdown timer
+Endless tower
+infinite progression
+leaderboard focus
+8) 2D UI Structure
+Main Screen Layout
+┌────────────────────────────────┐
+│ SCORE  FLOOR  MULTIPLIER       │
+├────────────────────────────────┤
+│                                │
+│         TOWER AREA             │
+│       [Current Floor]          │
+│                                │
+│     [ TILE ] [ TILE ]          │
+│     [ TILE ] [ TILE ]          │
+│                                │
+├────────────────────────────────┤
+│ BET PANEL   CASHOUT BUTTON     │
+└────────────────────────────────┘
+9) Main UI Components
+A) Tower Area (Center)
+
+Main gameplay zone.
+
+Contains:
+
+floors
+tiles
+player character
+effects
+Tower Design
+vertical structure
+glowing edges
+futuristic / temple / neon style
+B) Tiles
+
+Each tile:
+
+hover glow
+clickable
+animation on reveal
+
+States:
+
+hidden
+safe
+trap
+selected
+C) Player Character
+
+Can be:
+
+ninja
+robot
+astronaut
+explorer
+
+Animations:
+
+jump upward
+idle breathing
+panic on trap
+celebration on safe move
+D) Top HUD
+
+Shows:
+
+floor number
+current multiplier
+current possible reward
+streak
+timer
+
+Example:
+
+FLOOR 6
+MULTIPLIER 4.5x
+POSSIBLE WIN 450
+E) Cashout Button
+
+Very important element.
+
+large glowing button
+always visible
+updates dynamically
+
+Example:
+
+CASH OUT 4.5x
+F) Bet Panel
+
+Contains:
+
+coin input
+quick bet buttons
+auto climb toggle
+10) Visual Theme
+
+Best styles:
+
+dark neon sci-fi
+ancient temple
+cyberpunk tower
+lava dungeon
+11) Effects & Animations
+Safe tile
+green glow
+soft pulse
+upward jump animation
+Trap tile
+red flash
+explosion
+falling animation
+Cashout
+coin burst
+screen glow
+multiplier pop
+12) Audio System
+Sounds:
+tile click
+tower ambience
+danger warning
+win chime
+collapse sound
+13) Advanced Features
+A) Auto Climb
+
+Player sets:
+
+Auto cashout at Floor 5
+B) Lucky Shield
+
+One-time trap protection
+
+C) Hidden Treasure Floor
+
+Special bonus floor appears randomly
+
+D) Daily Missions
+reach floor 10
+survive 3 games
+perfect climb streak
+14) Game Psychology
+
+Why game feels intense:
+
+every floor = risk increase
+player greed grow karta hai
+“one more floor” tension
+instant reward temptation
+15) Mobile UI Layout
+┌────────────────┐
+│ HUD            │
+├────────────────┤
+│   Tower Area   │
+│    Tiles       │
+├────────────────┤
+│ Cashout Button │
+│ Bet Controls   │
+└────────────────┘
+
+Buttons large hone chahiye.
+
+16) Complete Gameplay Example
+User enters 100 coins
+Floor 1 → safe
+Reward = 1.2x
+Floor 2 → safe
+Reward = 1.8x
+Floor 3 → risky
+User cashout OR continue
+Wrong tile → lose
+Safe tile → higher multiplier
+17) Core Elements Summary
+Main Components:
+Tower
+Floors
+Tiles
+Character
+Multiplier HUD
+Cashout button
+Bet controls
+Trap effects
+Reward system
+18) Best Theme Recommendation
+Premium rich feel:
+matte black background
+gold tower edges
+neon cyan tiles
+glassmorphism panels
+smooth shadows
+
+Isse game “luxury arcade casino” vibe deta hai.

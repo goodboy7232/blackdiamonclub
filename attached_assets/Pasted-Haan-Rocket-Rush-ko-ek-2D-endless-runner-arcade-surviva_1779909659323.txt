@@ -1,0 +1,201 @@
+Haan, Rocket Rush ko ek 2D endless runner / arcade survival game ki tarah design kar sakte ho. Isme user rocket ko control karta hai, obstacles avoid karta hai, coins collect karta hai, aur jitni der survive kare utna score badhta hai.
+
+Rocket Rush — Detail Logic
+1) Main idea
+Rocket continuously आगे move karta rahega.
+Screen par asteroids, lasers, meteor fragments, space mines aate rahenge.
+Player ko left-right movement se dodge karna hoga.
+Coins / energy cells collect karke score aur upgrades milenge.
+Jitna long survive, utna high score.
+2) Game loop
+Game start
+Countdown
+Rocket move begin
+Obstacles spawn hona start
+Player dodge + collect
+Difficulty dheere-dheere increase
+Collision hua to game over
+Score, coins, distance, best score show
+3) Controls
+Left / Right: rocket ko lane ya free movement me shift karna
+Boost button: short speed burst
+Shield button: temporary protection
+Mobile me:
+swipe left/right
+tap boost
+tap shield
+4) Scoring system
+Distance score: jitna aage, utna score
+Coin score: har coin ka alag value
+Combo bonus: continuous coins collect karne par multiplier
+Near-miss bonus: obstacle ke bahut paas se bachne par extra points
+Survival bonus: time-based points
+5) Difficulty system
+
+Game time ke saath hard hota jaye:
+
+obstacle speed increase
+obstacle spawn gap reduce
+moving asteroids add hona
+fake safe gaps kam hona
+occasional special hazards aana
+6) Obstacle types
+Asteroid: basic moving obstacle
+Debris field: multiple small objects
+Laser beam: timed barrier
+Mine: touch hote hi damage
+Black hole zone: movement slow
+Comet streak: fast cross obstacle
+7) Power-ups
+Shield: 1 hit se bachata hai
+Magnet: coins auto collect
+Boost: temporarily speed up and invincible feel
+Double coins: score multiplier
+Repair pack: health restore
+8) Health / lives
+
+Simple system rakh sakte ho:
+
+Rocket ke paas 3 health bars
+Light hit = 1 health minus
+Full collision = instant damage
+Health 0 = game over
+
+Ya:
+
+One-hit mode for hardcore gameplay
+9) Win condition
+
+Is type ke game me usually “win” nahi hota, balki:
+
+best distance
+highest score
+daily challenge complete
+mission clear
+Rocket Rush — 2D UI Structure
+1) Main game screen
+
+Screen ko 4 major zones me divide karo:
+
+Top bar
+Score
+Distance
+Coins
+Health
+Pause button
+Center play area
+Rocket
+Obstacles
+Background stars
+Collectibles
+Effects
+Bottom control area
+Left / Right controls
+Boost
+Shield
+Pause / settings
+Side panels
+Mission info
+High score
+Power-up status
+Mini map or streak info
+2) Main screen elements
+Rocket
+Small 2D rocket sprite
+Glow trail
+Engine flame animation
+Damage state me flicker effect
+Background
+Dark space gradient
+Moving stars parallax effect
+Far planets slowly move
+Depth feel ke liye 2–3 layers
+Obstacles
+Asteroids ke alag sizes
+Red danger mines
+Laser gates
+Floating debris
+Collectibles
+Gold coins
+Blue energy cells
+Shield tokens
+Speed boost icons
+3) HUD elements
+
+Top side par clean HUD hona chahiye:
+
+Score: 12,450
+Distance: 3.2 km
+Coins: 85
+Health: 2/3
+Combo: x4
+
+HUD simple, readable aur neon style me ho.
+
+4) Buttons
+
+Bottom me 3 main buttons:
+
+Left
+Right
+Boost
+
+Extra small button:
+
+Shield
+
+Buttons large hone chahiye, especially mobile ke liye.
+
+5) Feedback effects
+
+Game ko real feel dene ke liye:
+
+coin collect par small pop animation
+obstacle near miss par screen flash
+boost par speed lines
+hit par camera shake
+game over par slow fade + explosion spark
+Rocket Rush ka real gameplay flow
+Start phase
+Title screen
+“Play” button
+Select mode:
+Classic
+Time Attack
+Hardcore
+Daily Run
+In-game
+Rocket center me spawn
+3 second countdown
+Background scroll start
+Obstacles random spawn
+Score auto increase
+End phase
+Final score
+Coins earned
+Best distance
+Restart button
+Share score button
+Layout idea for 2D UI
+┌──────────────────────────────────────┐
+│ SCORE   DISTANCE   COINS   HEALTH    │
+├──────────────────────────────────────┤
+│                                      │
+│        SPACE PLAY AREA               │
+│   stars  asteroids  rocket          │
+│                                      │
+├──────────────────────────────────────┤
+│  ← LEFT   BOOST   SHIELD   RIGHT →   │
+└──────────────────────────────────────┘
+Visual theme suggestion
+
+Rocket Rush ke liye best theme:
+
+dark blue / black space background
+cyan glow
+orange rocket flame
+white stars
+red danger obstacles
+gold coins
+
+Isse game premium aur fast feel hota hai.

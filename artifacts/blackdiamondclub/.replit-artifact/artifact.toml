@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "BlackDiamondClub"
+version = "1.0.0"
+id = "artifacts/blackdiamondclub"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18732
+
+[services.development]
+run = "pnpm --filter @workspace/blackdiamondclub run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/blackdiamondclub", "run", "build" ]
+publicDir = "artifacts/blackdiamondclub/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18732"
+BASE_PATH = "/"
